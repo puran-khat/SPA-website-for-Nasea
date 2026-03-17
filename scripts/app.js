@@ -1,4 +1,4 @@
-import { renderHome } from "../sections/home/home.js";
+import { renderHome, initHomeLightbox } from "../sections/home/home.js";
 import { renderAbout } from "../sections/about/about.js";
 import { renderAboutByLaw } from "../sections/about/bylaw.js";
 import { renderAboutPresidentMessage } from "../sections/about/president-message.js";
@@ -161,6 +161,9 @@ function renderRoute() {
 
   if (routeKey === "members") {
     initMembersSection();
+  }
+  if (routeKey === "home" || routeKey === "") {
+    initHomeLightbox();
   }
 
   setActiveLink(routeKey);
