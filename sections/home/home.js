@@ -1,32 +1,28 @@
 export function renderHome() {
   return `
-    <section class="hero">
-      <article class="card">
-        <h1>Nepalese Association in Southeast America</h1>
-        <p>
-          A community-centered nonprofit supporting Nepali families through events,
-          civic participation, education, and local service across Southeast America.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#events" data-link>Upcoming Events</a>
-          <a class="btn btn-ghost" href="#organizations" data-link>Get Involved</a>
-        </div>
-      </article>
-      <aside class="card">
-        <h3>Quick Updates</h3>
-        <div class="timeline-item">
-          <strong>Community Announcement</strong>
-          <p>Election and organizational updates are available for members.</p>
-        </div>
-        <div class="timeline-item">
-          <strong>Relief &amp; Support</strong>
-          <p>Fundraising and disbursement reports are published for transparency.</p>
-        </div>
-      </aside>
-    </section>
+    <div class="home-layout">
+      <div class="home-sidebar">
+        <article class="card">
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#events" data-link>Upcoming Events</a>
+            <a class="btn btn-ghost" href="#organizations" data-link>Get Involved</a>
+          </div>
+        </article>
+        <aside class="card">
+          <h3>Quick Updates</h3>
+          <div class="timeline-item">
+            <strong>Community Announcement</strong>
+            <p>Election and organizational updates are available for members.</p>
+          </div>
+          <div class="timeline-item">
+            <strong>Relief &amp; Support</strong>
+            <p>Fundraising and disbursement reports are published for transparency.</p>
+          </div>
+        </aside>
+      </div>
 
-    <section class="section card">
-      <h2>Latest News &amp; Bulletins</h2>
+      <section class="home-news card">
+        <h2>Latest News &amp; Bulletins</h2>
 
       <article class="news-article">
         <div class="news-photo-placeholder">
@@ -178,6 +174,7 @@ export function renderHome() {
         </div>
       </article>
 
-    </section>
+      </section>
+    </div>
   `;
 }

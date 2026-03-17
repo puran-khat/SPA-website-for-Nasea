@@ -208,6 +208,24 @@ main {
   margin: 1.4rem 0;
 }
 
+.home-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.2rem;
+  margin: 1.4rem 0;
+  align-items: start;
+}
+
+.home-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home-news {
+  min-width: 0;
+}
+
 .card {
   background: var(--card);
   border: 1px solid var(--line);
@@ -631,6 +649,10 @@ h1 {
 
 @media (max-width: 880px) {
   .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .home-layout {
     grid-template-columns: 1fr;
   }
 

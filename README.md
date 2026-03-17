@@ -1,6 +1,6 @@
 # THis Web Site is created by 
-Developer: Puran Raj Khatiwada
-Email: puranhatiwada@gmail.com
+            Developer: Puran Raj Khatiwada
+            Email: purankhatiwada@gmail.com
 
 # Safe NASeA SPA
 
