@@ -30,9 +30,17 @@ export function renderCommittees() {
       <div class="committee-list">
         ${committeeMembers
           .map(
-            (member) => `
+            (member, index) => `
           <article class="committee-member">
-            <div class="committee-photo">Photo Placeholder</div>
+            <div class="committee-photo">
+              <img
+                class="committee-photo-image"
+                src="sections/committees/images/member-${index + 1}.jpg"
+                alt="${member.name}"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              >
+              <span class="committee-photo-fallback" style="display:none;">Photo Placeholder</span>
+            </div>
             <div class="committee-info">
               <h3>${member.designation}</h3>
               <p>${member.name}, ${member.state}</p>

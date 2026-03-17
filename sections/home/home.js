@@ -29,7 +29,15 @@ export function renderHome() {
       <h2>Latest News &amp; Bulletins</h2>
 
       <article class="news-article">
-        <div class="news-photo-placeholder"><div class="photo-box">Article Photo Placeholder</div></div>
+        <div class="news-photo-placeholder">
+          <img
+            class="news-photo-image"
+            src="sections/home/images/news-1.jpg"
+            alt="Sincere Gratitude article"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-box" style="display:none;">Article Photo Placeholder</div>
+        </div>
         <div class="news-body">
           <h3>Sincere Gratitude to Prime Minister of Nepal</h3>
           <p class="news-meta">March 7th, 2026 &nbsp;|&nbsp; Local News, NASeA Bulletin</p>
@@ -60,7 +68,15 @@ export function renderHome() {
       </article>
 
       <article class="news-article">
-        <div class="news-photo-placeholder"><div class="photo-box">Article Photo Placeholder</div></div>
+        <div class="news-photo-placeholder">
+          <img
+            class="news-photo-image"
+            src="sections/home/images/news-2.jpg"
+            alt="Urgent Advisory article"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-box" style="display:none;">Article Photo Placeholder</div>
+        </div>
         <div class="news-body">
           <h3>Urgent Advisory to All Nepali Citizens Residing and Working Across the Middle East</h3>
           <p class="news-meta">March 4th, 2026 &nbsp;|&nbsp; Uncategorized</p>
@@ -91,7 +107,15 @@ export function renderHome() {
       </article>
 
       <article class="news-article">
-        <div class="news-photo-placeholder"><div class="photo-box">Article Photo Placeholder</div></div>
+        <div class="news-photo-placeholder">
+          <img
+            class="news-photo-image"
+            src="sections/home/images/news-3.jpg"
+            alt="Embassy Press Release article"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-box" style="display:none;">Article Photo Placeholder</div>
+        </div>
         <div class="news-body">
           <h3>Press Release From Embassy of Nepal &ndash; US</h3>
           <p class="news-meta">February 11th, 2026 &nbsp;|&nbsp; Local News, NASeA Bulletin</p>
@@ -116,7 +140,15 @@ export function renderHome() {
       </article>
 
       <article class="news-article">
-        <div class="news-photo-placeholder"><div class="photo-box">Article Photo Placeholder</div></div>
+        <div class="news-photo-placeholder">
+          <img
+            class="news-photo-image"
+            src="sections/home/images/news-4.jpg"
+            alt="In Memory article"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-box" style="display:none;">Article Photo Placeholder</div>
+        </div>
         <div class="news-body">
           <h3>In Memory of Officer Pradeep Tamang</h3>
           <p class="news-meta">February 3rd, 2026 &nbsp;|&nbsp; Local News, NASeA Bulletin</p>

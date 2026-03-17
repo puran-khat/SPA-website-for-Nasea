@@ -21,7 +21,15 @@
 
     <header class="site-header">
       <div class="header-layout">
-        <div class="logo-placeholder" aria-label="NASeA logo placeholder">NASeA Logo</div>
+        <div class="logo-placeholder" aria-label="NASeA logo placeholder">
+          <img
+            class="logo-image"
+            src="sections/home/images/nasea-logo.png"
+            alt="NASeA Logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          />
+          <span class="logo-fallback">NASeA Logo</span>
+        </div>
 
         <div class="header-content">
           <div class="brand-row">

@@ -4,7 +4,13 @@ export function renderAtlantaSchool() {
       <h2>Atlanta Nepali School</h2>
 
       <div class="school-photo-placeholder">
-        <div class="photo-box">Atlanta Nepali School Photo Placeholder</div>
+        <img
+          class="school-photo-image"
+          src="sections/community-resources/images/atlanta-nepali-school.jpg"
+          alt="Atlanta Nepali School"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        >
+        <div class="photo-box" style="display:none;">Atlanta Nepali School Photo Placeholder</div>
       </div>
 
       <p style="margin-top:1.25rem">

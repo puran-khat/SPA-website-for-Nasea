@@ -71,7 +71,13 @@ export function renderAboutPresidentMessage() {
         </article>
 
         <aside class="president-photo-placeholder">
-          <div class="photo-box">President Photo Placeholder</div>
+          <img
+            class="president-photo-image"
+            src="sections/about/images/president-message.jpg"
+            alt="President Photo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="photo-box" style="display:none;">President Photo Placeholder</div>
         </aside>
       </div>
     </section>
