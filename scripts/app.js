@@ -1,14 +1,14 @@
-import { renderHome } from "./sections/home/home.js";
-import { renderAbout } from "./sections/about/about.js";
-import { renderAboutByLaw } from "./sections/about/bylaw.js";
-import { renderAboutPresidentMessage } from "./sections/about/president-message.js";
-import { renderAboutHistory } from "./sections/about/history.js";
-import { renderAboutFormerPresidents } from "./sections/about/former-presidents.js";
-import { renderAboutMissionStatement } from "./sections/about/mission-statement.js";
-import { renderAboutInfo } from "./sections/about/info.js";
-import { renderCommittees } from "./sections/committees/committees.js";
-import { renderPastCommittees } from "./sections/committees/committees-past.js";
-import { renderAdvisors20252027 } from "./sections/committees/committees-advisors.js";
+import { renderHome } from "../sections/home/home.js";
+import { renderAbout } from "../sections/about/about.js";
+import { renderAboutByLaw } from "../sections/about/bylaw.js";
+import { renderAboutPresidentMessage } from "../sections/about/president-message.js";
+import { renderAboutHistory } from "../sections/about/history.js";
+import { renderAboutFormerPresidents } from "../sections/about/former-presidents.js";
+import { renderAboutMissionStatement } from "../sections/about/mission-statement.js";
+import { renderAboutInfo } from "../sections/about/info.js";
+import { renderCommittees } from "../sections/committees/committees.js";
+import { renderPastCommittees } from "../sections/committees/committees-past.js";
+import { renderAdvisors20252027 } from "../sections/committees/committees-advisors.js";
 import {
   renderCommittees20212023,
   renderCommittees20192021,
@@ -19,22 +19,22 @@ import {
   renderCommittees20092011,
   renderCommittees20072009,
   renderCommittees20052007,
-} from "./sections/committees/committee-archives.js";
+} from "../sections/committees/committee-archives.js";
 import {
   renderPublication,
   renderPublicationYetiViewPoints,
   renderPublicationYetiViews,
   renderPublicationMisc,
-} from "./sections/publication/publication.js";
-import { renderResources } from "./sections/community-resources/resources.js";
-import { renderAtlantaSchool } from "./sections/community-resources/resources-atlanta-nepali-school.js";
-import { renderNewToUSA } from "./sections/community-resources/resources-new-to-usa.js";
-import { renderElection } from "./sections/election/election.js";
-import { renderEvents } from "./sections/events/events.js";
-import { renderOrganizations } from "./sections/organizations/organizations.js";
-import { renderOrganizationsNASeARegion } from "./sections/organizations/organizations-nasea-region.js";
-import { renderMembers, initMembersSection } from "./sections/members/members.js";
-import { renderFooter } from "./sections/footer.js";
+} from "../sections/publication/publication.js";
+import { renderResources } from "../sections/community-resources/resources.js";
+import { renderAtlantaSchool } from "../sections/community-resources/resources-atlanta-nepali-school.js";
+import { renderNewToUSA } from "../sections/community-resources/resources-new-to-usa.js";
+import { renderElection } from "../sections/election/election.js";
+import { renderEvents } from "../sections/events/events.js";
+import { renderOrganizations } from "../sections/organizations/organizations.js";
+import { renderOrganizationsNASeARegion } from "../sections/organizations/organizations-nasea-region.js";
+import { renderMembers, initMembersSection } from "../sections/members/members.js";
+import { renderFooter } from "../sections/footer.js";
 
 const routes = {
   home: renderHome,
