@@ -1,3 +1,7 @@
+# THis Web Site is created by 
+Developer: Puran Raj Khatiwada
+Email: puranhatiwada@gmail.com
+
 # Safe NASeA SPA
 
 Static single-page application (HTML/CSS/JS) created as a safe replacement for a WordPress-style org homepage.
