@@ -1,5 +1,6 @@
 import { renderHome, initHomeLightbox } from "../sections/home/home.js";
 import { renderAbout } from "../sections/about/about.js";
+import { renderAboutByLaw } from "../sections/about/bylaw.js?v=20260317f";
 import { renderAboutPresidentMessage } from "../sections/about/president-message.js?v=20260317";
 import { renderAboutHistory } from "../sections/about/history.js";
 import { renderAboutFormerPresidents } from "../sections/about/former-presidents.js";
@@ -38,6 +39,7 @@ import { renderFooter } from "../sections/footer.js";
 const routes = {
   home: renderHome,
   about: renderAbout,
+  "about-bylaw": renderAboutByLaw,
   "about-president-message": renderAboutPresidentMessage,
   "about-history": renderAboutHistory,
   "about-former-presidents": renderAboutFormerPresidents,
@@ -84,8 +86,14 @@ const resourcesToggle = document.getElementById("resourcesToggle");
 const resourcesMenu = document.getElementById("resourcesMenu");
 const organizationsToggle = document.getElementById("organizationsToggle");
 const organizationsMenu = document.getElementById("organizationsMenu");
+const siteThemeToggle = document.getElementById("siteThemeToggle");
+const siteSearchInput = document.getElementById("siteSearchInput");
+const siteSearchButton = document.getElementById("siteSearchButton");
+const siteSearchResults = document.getElementById("siteSearchResults");
+const SITE_THEME_KEY = "nasea-theme-mode";
 
 siteFooter.innerHTML = renderFooter();
+initGlobalTools();
 
 aboutToggle.addEventListener("click", () => {
   const isOpen = aboutMenu.classList.toggle("open");
@@ -145,6 +153,7 @@ document.addEventListener("click", (event) => {
   closePublicationMenu();
   closeResourcesMenu();
   closeOrganizationsMenu();
+  siteSearchResults?.classList.remove("open");
 
   if (window.innerWidth < 720) {
     nav.classList.remove("open");
@@ -218,4 +227,141 @@ function closeResourcesMenu() {
 function closeOrganizationsMenu() {
   organizationsMenu.classList.remove("open");
   organizationsToggle.setAttribute("aria-expanded", "false");
+}
+
+function initGlobalTools() {
+  if (!siteThemeToggle || !siteSearchInput || !siteSearchButton || !siteSearchResults) return;
+
+  const applyTheme = (mode) => {
+    const isNight = mode === "night";
+    document.body.classList.toggle("night-mode", isNight);
+    siteThemeToggle.textContent = isNight ? "Day Mode" : "Night Mode";
+  };
+
+  let savedTheme = "day";
+  try {
+    savedTheme = localStorage.getItem(SITE_THEME_KEY) || "day";
+  } catch {
+    savedTheme = "day";
+  }
+  applyTheme(savedTheme);
+
+  siteThemeToggle.addEventListener("click", () => {
+    const nextMode = document.body.classList.contains("night-mode") ? "day" : "night";
+    applyTheme(nextMode);
+    try {
+      localStorage.setItem(SITE_THEME_KEY, nextMode);
+    } catch {
+      // Ignore storage failures.
+    }
+  });
+
+  const index = Object.entries(routes)
+    .map(([routeKey, view]) => {
+      let html = "";
+      try {
+        html = typeof view === "function" ? view() : "";
+      } catch {
+        html = "";
+      }
+
+      const text = normalizeText(stripHtml(html));
+      return {
+        routeKey,
+        title: routeKeyToTitle(routeKey),
+        text,
+      };
+    })
+    .filter((item) => item.text.length > 0);
+
+  const runSearch = () => {
+    const queryRaw = siteSearchInput.value.trim();
+    const query = normalizeText(queryRaw);
+
+    if (!query) {
+      siteSearchResults.innerHTML = "";
+      siteSearchResults.classList.remove("open");
+      return;
+    }
+
+    const matches = index
+      .filter((item) => item.text.includes(query) || item.title.toLowerCase().includes(query))
+      .slice(0, 20);
+
+    if (!matches.length) {
+      siteSearchResults.innerHTML = `<p class="muted">No results for \"${escapeHtml(queryRaw)}\".</p>`;
+      siteSearchResults.classList.add("open");
+      return;
+    }
+
+    siteSearchResults.innerHTML = `
+      <p class="muted">${matches.length} result(s) for \"${escapeHtml(queryRaw)}\".</p>
+      <ul>
+        ${matches
+          .map((item) => {
+            const snippet = getSnippet(item.text, query);
+            return `
+              <li>
+                <a href="#${item.routeKey}" data-link>${escapeHtml(item.title)}</a>
+                <p class="muted">${escapeHtml(snippet)}</p>
+              </li>
+            `;
+          })
+          .join("")}
+      </ul>
+    `;
+    siteSearchResults.classList.add("open");
+  };
+
+  siteSearchButton.addEventListener("click", runSearch);
+  siteSearchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      runSearch();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".site-search-wrap") && !event.target.closest("#siteSearchResults")) {
+      siteSearchResults.classList.remove("open");
+    }
+  });
+}
+
+function normalizeText(value) {
+  return String(value || "").replace(/\s+/g, " ").trim().toLowerCase();
+}
+
+function stripHtml(html) {
+  return String(html || "").replace(/<[^>]*>/g, " ");
+}
+
+function routeKeyToTitle(routeKey) {
+  const key = String(routeKey || "");
+  return key
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
+function getSnippet(text, query) {
+  const source = String(text || "");
+  const lowerSource = source.toLowerCase();
+  const at = lowerSource.indexOf(query);
+
+  if (at < 0) return source.slice(0, 180);
+
+  const start = Math.max(0, at - 80);
+  const end = Math.min(source.length, at + query.length + 80);
+  const prefix = start > 0 ? "..." : "";
+  const suffix = end < source.length ? "..." : "";
+  return `${prefix}${source.slice(start, end)}${suffix}`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 }
