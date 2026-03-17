@@ -1,13 +1,12 @@
 import { renderHome, initHomeLightbox } from "../sections/home/home.js";
 import { renderAbout } from "../sections/about/about.js";
-import { renderAboutByLaw } from "../sections/about/bylaw.js";
-import { renderAboutPresidentMessage } from "../sections/about/president-message.js";
+import { renderAboutPresidentMessage } from "../sections/about/president-message.js?v=20260317";
 import { renderAboutHistory } from "../sections/about/history.js";
 import { renderAboutFormerPresidents } from "../sections/about/former-presidents.js";
 import { renderAboutMissionStatement } from "../sections/about/mission-statement.js";
 import { renderAboutInfo } from "../sections/about/info.js";
-import { renderCommittees } from "../sections/committees/committees.js";
-import { renderPastCommittees } from "../sections/committees/committees-past.js";
+import { renderCommittees } from "../sections/committees/NASeA Executive Committee 2025-2027.js?v=20260317";
+import { renderPastCommittees } from "../sections/committees/past/committees-past.js?v=20260317";
 import { renderAdvisors20252027 } from "../sections/committees/committees-advisors.js";
 import {
   renderCommittees20212023,
@@ -19,7 +18,7 @@ import {
   renderCommittees20092011,
   renderCommittees20072009,
   renderCommittees20052007,
-} from "../sections/committees/committee-archives.js";
+} from "../sections/committees/committee-archives.js?v=20260317";
 import {
   renderPublication,
   renderPublicationYetiViewPoints,
@@ -39,7 +38,6 @@ import { renderFooter } from "../sections/footer.js";
 const routes = {
   home: renderHome,
   about: renderAbout,
-  "about-bylaw": renderAboutByLaw,
   "about-president-message": renderAboutPresidentMessage,
   "about-history": renderAboutHistory,
   "about-former-presidents": renderAboutFormerPresidents,

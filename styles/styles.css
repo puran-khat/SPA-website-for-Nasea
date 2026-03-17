@@ -1,13 +1,21 @@
 :root {
-  --paper: #f8f5ed;
-  --ink: #1e293b;
-  --ink-soft: #475569;
-  --accent: #cc4b00;
-  --accent-2: #00877a;
-  --card: #fffdf8;
-  --line: #eadfca;
-  --shadow: 0 10px 30px rgba(30, 41, 59, 0.12);
-  --radius: 16px;
+  /* Nepal flag: crimson red #DC143C, deep blue border #003082 */
+  --nepal-red:   #DC143C;
+  --nepal-blue:  #003082;
+  --snow:        #FFFFFF;
+  --dawn-sky:    #FFF5F0;   /* warm cream – Himalayan dawn */
+  --mid-sky:     #FFE8DA;
+  --horizon:     #FFDCC8;
+
+  --paper:    #FFF8F5;
+  --ink:      #1a0a05;
+  --ink-soft: #5a3025;
+  --accent:   var(--nepal-red);
+  --accent-2: var(--nepal-blue);
+  --card:     rgba(255, 255, 255, 0.92);
+  --line:     #f2d4c8;
+  --shadow:   0 12px 32px rgba(60, 10, 10, 0.13);
+  --radius:   16px;
 }
 
 * {
@@ -23,8 +31,15 @@ body {
 body {
   min-height: 100vh;
   color: var(--ink);
-  background: radial-gradient(circle at 10% 10%, #fff5d7 0, transparent 25%),
-    radial-gradient(circle at 90% 0%, #d6f5ef 0, transparent 22%), var(--paper);
+  /* Himalayan dawn sky: warm cream top → soft peach horizon */
+  background: linear-gradient(
+    180deg,
+    #FFF8F2 0%,
+    #FFE9D8 38%,
+    #FFDECE 60%,
+    #FFD6C0 78%,
+    #FFCFB4 100%
+  );
   font-family: "Manrope", sans-serif;
   line-height: 1.6;
 }
@@ -32,21 +47,75 @@ body {
 .bg-art {
   position: fixed;
   inset: 0;
-  background-image: linear-gradient(transparent 96%, rgba(204, 75, 0, 0.06) 96%),
-    linear-gradient(90deg, transparent 96%, rgba(0, 135, 122, 0.06) 96%);
-  background-size: 28px 28px;
   pointer-events: none;
   z-index: -1;
+  overflow: hidden;
+}
+
+/* ── Nepal flag double-pennant accent (top-left) ── */
+.bg-art::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Upper Nepal-flag pennant: wide blue border + crimson fill */
+  background:
+    /* crimson upper triangle */
+    conic-gradient(from 195deg at 0% 0%, transparent 0 54deg, rgba(220, 20, 60, 0.28) 54deg 108deg, transparent 108deg),
+    /* blue border behind it */
+    conic-gradient(from 193deg at 0% 0%, transparent 0 56deg, rgba(0, 48, 130, 0.32) 56deg 111deg, transparent 111deg),
+    /* crimson lower pennant */
+    conic-gradient(from 195deg at 0% 0%, transparent 0 54deg, rgba(220, 20, 60, 0.22) 54deg 108deg, transparent 108deg) -2% 14% / 100% 100% no-repeat,
+    /* blue border lower pennant */
+    conic-gradient(from 193deg at 0% 0%, transparent 0 56deg, rgba(0, 48, 130, 0.26) 56deg 111deg, transparent 111deg) -3% 15% / 100% 100% no-repeat,
+    /* Dhaka-inspired tiny diamond tile in accent colors */
+    repeating-conic-gradient(
+      rgba(220, 20, 60, 0.07) 0deg 25deg,
+      transparent 25deg 50deg
+    ) 50% 50% / 28px 28px;
+}
+
+/* ── Mountain silhouette (bottom) ── */
+.bg-art::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 38%;
+  background:
+    /* Snowcap highlights */
+    radial-gradient(ellipse 6% 4% at 20% 0%, rgba(255,255,255,0.9) 0%, transparent 70%),
+    radial-gradient(ellipse 5% 3% at 40% -4%, rgba(255,255,255,0.85) 0%, transparent 70%),
+    radial-gradient(ellipse 7% 4% at 62% -1%, rgba(255,255,255,0.88) 0%, transparent 70%),
+    radial-gradient(ellipse 5% 3% at 82% 2%, rgba(255,255,255,0.8) 0%, transparent 70%),
+    /* Mountain ranges — far (lightest) */
+    linear-gradient(178deg,transparent 0%,transparent 55%,rgba(0,48,130,0.10) 55%,rgba(0,48,130,0.10) 100%),
+    /* Mountain ranges — mid */
+    linear-gradient(175deg,transparent 0%,transparent 40%,rgba(0,48,130,0.17) 40%,rgba(0,48,130,0.17) 100%),
+    /* Mountain ranges — near (darkest) */
+    linear-gradient(172deg,transparent 0%,transparent 22%,rgba(0,48,130,0.25) 22%,rgba(0,48,130,0.25) 100%);
+  clip-path: polygon(
+    0% 100%, 0% 55%,
+    5% 38%, 10% 22%, 14% 36%, 18% 14%, 22% 30%, 26% 8%, 30% 28%,
+    35% 5%,  40% 25%, 45% 10%, 50% 30%,
+    55% 8%,  60% 22%, 65% 4%,  70% 20%,
+    75% 12%, 80% 30%, 85% 18%, 90% 35%,
+    95% 20%, 100% 40%, 100% 100%
+  );
+  opacity: 0.62;
 }
 
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 3000;
   padding: 0.8rem 1rem;
-  background: rgba(248, 245, 237, 0.9);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(8px);
+  /* Nepal flag red top stripe + blue bottom accent line */
+  background: rgba(255, 248, 245, 0.92);
+  border-top: 3px solid var(--nepal-red);
+  border-bottom: 2px solid var(--nepal-blue);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 18px rgba(220, 20, 60, 0.09);
 }
 
 .header-layout {
@@ -131,8 +200,8 @@ body {
 
 .site-nav a:hover,
 .site-nav a.active {
-  color: var(--ink);
-  background: #fff4e8;
+  color: var(--nepal-red);
+  background: rgba(220, 20, 60, 0.08);
 }
 
 .nav-group {
@@ -152,8 +221,8 @@ body {
 
 .about-toggle:hover,
 .about-toggle.active {
-  color: var(--ink);
-  background: #fff4e8;
+  color: var(--nepal-red);
+  background: rgba(220, 20, 60, 0.08);
 }
 
 .about-menu {
@@ -227,10 +296,11 @@ main {
 }
 
 .card {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.91);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
   padding: 1rem;
 }
 
@@ -283,8 +353,9 @@ h1 {
 }
 
 .btn-primary {
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--nepal-red) 0%, #a80f22 100%);
   color: #fff;
+  box-shadow: 0 3px 10px rgba(220, 20, 60, 0.30);
 }
 
 .btn-ghost {
@@ -294,7 +365,7 @@ h1 {
 }
 
 .timeline-item {
-  border-left: 4px solid #f6c18d;
+  border-left: 4px solid var(--nepal-red);
   padding-left: 0.8rem;
   margin-bottom: 0.9rem;
 }
@@ -307,14 +378,21 @@ h1 {
 
 .president-photo-placeholder {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 360px;
+  justify-self: end;
 }
 
 .president-photo-image {
   width: 100%;
-  min-height: 320px;
-  border: 1px solid var(--line);
+  height: 380px;
+  border: 2px solid var(--nepal-red);
   border-radius: 12px;
   object-fit: cover;
+  object-position: top center;
+  display: block;
 }
 
 .school-photo-placeholder {
@@ -332,8 +410,8 @@ h1 {
 }
 
 .resource-callout {
-  border-left: 4px solid var(--accent);
-  background: #fffaf1;
+  border-left: 4px solid var(--nepal-red);
+  background: rgba(220, 20, 60, 0.05);
   margin: 1rem 0 1.5rem;
   padding: 0.75rem 1.1rem;
   border-radius: 0 8px 8px 0;
@@ -393,9 +471,9 @@ h1 {
 .committee-photo {
   width: 92px;
   min-height: 92px;
-  border: 2px dashed #d6bea0;
+  border: none;
   border-radius: 10px;
-  background: #fffaf1;
+  background: transparent;
   color: var(--ink-soft);
   font-size: 0.78rem;
   font-weight: 700;
@@ -449,8 +527,8 @@ h1 {
 }
 
 .member-tab.active {
-  background: #fff4e8;
-  color: var(--ink);
+  background: rgba(220, 20, 60, 0.08);
+  color: var(--nepal-red);
 }
 
 .member-search {
@@ -489,7 +567,7 @@ h1 {
   position: sticky;
   top: 0;
   z-index: 1;
-  background: #fff8ec;
+  background: rgba(220, 20, 60, 0.06);
   font-weight: 700;
 }
 
@@ -509,7 +587,8 @@ h1 {
 }
 
 .member-pagination button.active {
-  background: #fff4e8;
+  background: rgba(220, 20, 60, 0.08);
+  color: var(--nepal-red);
   font-weight: 700;
 }
 
@@ -595,15 +674,20 @@ h1 {
   position: fixed;
   top: 1.1rem;
   right: 1.5rem;
-  background: none;
-  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 2rem;
   line-height: 1;
   cursor: pointer;
   z-index: 10000;
-  opacity: 0.82;
+  opacity: 1;
   transition: opacity 0.15s;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
   padding: 0;
 }
 
@@ -682,6 +766,12 @@ h1 {
   .news-photo-image {
     width: 100%;
   }
+  .bg-art::before {
+    background-size: 40% 18%, 72% 24%;
+  }
+  .bg-art::after {
+    opacity: 0.7;
+  }
 }
 
 .site-footer {
@@ -689,7 +779,7 @@ h1 {
   margin: 2rem auto;
   padding: 1rem;
   color: var(--ink-soft);
-  border-top: 1px solid var(--line);
+  border-top: 2px solid var(--nepal-red);
 }
 
 .muted {
@@ -716,6 +806,18 @@ h1 {
 
   .message-layout {
     grid-template-columns: 1fr;
+  }
+
+  .president-photo-placeholder {
+    order: -1;
+    max-width: 100%;
+    justify-self: stretch;
+    margin-bottom: 0.5rem;
+  }
+
+  .president-photo-image {
+    height: auto;
+    max-height: 460px;
   }
 
   .grid {

@@ -73,9 +73,9 @@ export function renderAboutPresidentMessage() {
         <aside class="president-photo-placeholder">
           <img
             class="president-photo-image"
-            src="sections/about/images/president-message.jpg"
-            alt="President Photo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            src="/sections/about/images/President_Bidya.jpg?v=20260317"
+            alt="President Bidya Gurung"
+            onerror="if (!this.dataset.retry) { this.dataset.retry = '1'; this.src = 'sections/about/images/President_Bidya.jpg'; return; } this.style.display='none'; this.nextElementSibling.style.display='flex';"
           >
           <div class="photo-box" style="display:none;">President Photo Placeholder</div>
         </aside>

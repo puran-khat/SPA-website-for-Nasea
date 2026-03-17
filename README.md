@@ -28,7 +28,6 @@ Routing and menu behavior live in `app.js`.
 
 The About Us dropdown subpages are split into separate files:
 
-- By Law: `sections/about/bylaw.js`
 - President Message: `sections/about/president-message.js`
 - History of NASeA: `sections/about/history.js`
 - Former President: `sections/about/former-presidents.js`

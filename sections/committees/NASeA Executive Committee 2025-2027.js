@@ -23,6 +23,20 @@ export function renderCommittees() {
     { designation: "Executive Member", name: "Subash Pokhrel", state: "MD" },
   ];
 
+  const renderMemberPhoto = (member) => {
+    const basePath = `/sections/committees/images/${member.name}`;
+    const version = "20260317";
+
+    return `
+              <img
+                class="committee-photo-image"
+                src="${basePath}.jpg?v=${version}"
+                alt="${member.name}"
+                onerror="if (!this.dataset.tryJpeg) { this.dataset.tryJpeg='1'; this.src='${basePath}.jpeg?v=${version}'; return; } if (!this.dataset.tryPng) { this.dataset.tryPng='1'; this.src='${basePath}.png?v=${version}'; return; } this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              >
+    `;
+  };
+
   return `
     <section class="section card">
       <h2>NASeA Executive Committee 2025-2027</h2>
@@ -30,15 +44,10 @@ export function renderCommittees() {
       <div class="committee-list">
         ${committeeMembers
           .map(
-            (member, index) => `
+            (member) => `
           <article class="committee-member">
             <div class="committee-photo">
-              <img
-                class="committee-photo-image"
-                src="sections/committees/images/member-${index + 1}.jpg"
-                alt="${member.name}"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              >
+              ${renderMemberPhoto(member)}
               <span class="committee-photo-fallback" style="display:none;">Photo Placeholder</span>
             </div>
             <div class="committee-info">
