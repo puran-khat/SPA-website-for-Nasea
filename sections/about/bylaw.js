@@ -1,12 +1,21 @@
+const BYLAW_PDF_PATH = "/sections/about/bylaw-files/NASeA_ByLaws.pdf";
+
 export function renderAboutByLaw() {
   return `
     <section class="section card">
-      <h2>By Law</h2>
+      <h2>Official Bylaws Document</h2>
       <p>
-        Maintain your official bylaws in this page. Add articles, sections,
-        voting rules, governance terms, and amendment procedures here.
+        <a class="btn btn-ghost" href="${BYLAW_PDF_PATH}" target="_blank" rel="noopener">
+          Open / Download By Laws PDF
+        </a>
       </p>
-      <p class="muted">Tip: Keep version/date updates at the top for members.</p>
+      <iframe
+        title="NASeA By Laws PDF"
+        src="${BYLAW_PDF_PATH}#page=1"
+        width="100%"
+        height="900"
+        style="border: 1px solid #d8dee8; border-radius: 10px; background: #fff;"
+      ></iframe>
     </section>
   `;
 }
