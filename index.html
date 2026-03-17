@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nepalese Association in Southeast America - community, events, resources, and publications."
+    />
+    <title>NASeA Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-art" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="header-layout">
+        <div class="logo-placeholder" aria-label="NASeA logo placeholder">NASeA Logo</div>
+
+        <div class="header-content">
+          <div class="brand-row">
+            <a class="brand" href="#home" data-link>
+              <span class="brand-text">Nepalese Association in Southeast America ( NASeA)</span>
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <nav class="site-nav" id="siteNav">
+            <a href="#home" data-link>Home</a>
+            <div class="nav-group" id="aboutGroup">
+              <button
+                class="about-toggle"
+                id="aboutToggle"
+                aria-expanded="false"
+                aria-controls="aboutMenu"
+              >
+                About Us
+              </button>
+              <div class="about-menu" id="aboutMenu">
+                <a href="#about-bylaw" data-link>By Law</a>
+                <a href="#about-president-message" data-link>President Message</a>
+                <a href="#about-history" data-link>History of NASeA</a>
+                <a href="#about-former-presidents" data-link>Former President</a>
+                <a href="#about-mission-statement" data-link>Mission Statement</a>
+                <a href="#about-info" data-link>NASeA Info</a>
+              </div>
+            </div>
+            <div class="nav-group" id="committeeGroup">
+              <button
+                class="about-toggle"
+                id="committeeToggle"
+                aria-expanded="false"
+                aria-controls="committeeMenu"
+              >
+                Committees
+              </button>
+              <div class="about-menu" id="committeeMenu">
+                <a href="#committees-current" data-link>Current Committee</a>
+                <a href="#committees-past" data-link>Past Committee</a>
+                <a href="#committees-advisors-2025-2027" data-link>Advisors 2025-2027</a>
+              </div>
+            </div>
+            <div class="nav-group" id="publicationGroup">
+              <button
+                class="about-toggle"
+                id="publicationToggle"
+                aria-expanded="false"
+                aria-controls="publicationMenu"
+              >
+                Publication
+              </button>
+              <div class="about-menu" id="publicationMenu">
+                <a href="#publications" data-link>Overview</a>
+                <a href="#publications-yeti-viewpoints" data-link>Yeti ViewPoints</a>
+                <a href="#publications-yeti-views" data-link>Yeti Views</a>
+                <a href="#publications-misc" data-link>Miscellaneous</a>
+              </div>
+            </div>
+            <div class="nav-group" id="resourcesGroup">
+              <button
+                class="about-toggle"
+                id="resourcesToggle"
+                aria-expanded="false"
+                aria-controls="resourcesMenu"
+              >
+                Community Resources
+              </button>
+              <div class="about-menu" id="resourcesMenu">
+                <a href="#resources" data-link>Overview</a>
+                <a href="#resources-atlanta-nepali-school" data-link>Atlanta Nepali School</a>
+                <a href="#resources-new-to-usa" data-link>Are You New to USA?</a>
+              </div>
+            </div>
+            <a href="#election" data-link>NASeA Election</a>
+            <a href="#events" data-link>Events</a>
+            <div class="nav-group" id="organizationsGroup">
+              <button
+                class="about-toggle"
+                id="organizationsToggle"
+                aria-expanded="false"
+                aria-controls="organizationsMenu"
+              >
+                Organizations
+              </button>
+              <div class="about-menu" id="organizationsMenu">
+                <a href="#organizations" data-link>Overview</a>
+                <a href="#organizations-nasea-region" data-link>NASeA Region &amp; USA Organizations</a>
+              </div>
+            </div>
+            <a href="#members" data-link>Members</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="app"></main>
+
+    <footer class="site-footer" id="siteFooter"></footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
