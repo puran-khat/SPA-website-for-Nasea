@@ -4,6 +4,9 @@ export function renderAboutByLaw() {
   return `
     <section class="section card">
       <h2>Official Bylaws Document</h2>
+      <div class="section-subheading-box" role="note" aria-label="By Law page subheading">
+        Constitution and Bylaws of Nepali Association in Southeast America (NASeA)
+      </div>
       <p>
         <a class="btn btn-ghost" href="${BYLAW_PDF_PATH}" target="_blank" rel="noopener">
           Open / Download By Laws PDF
