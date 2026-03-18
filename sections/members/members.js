@@ -18,9 +18,9 @@ export function renderMembers() {
   return `
     <section class="section card">
       <h2>Members</h2>
-      <p class="muted">
+      <div class="section-subheading-box" role="note" aria-label="Members subheading">
         Directory with search and pagination. Showing ${PAGE_SIZE} per page.
-      </p>
+      </div>
       <p class="muted">
         Keep adding new members as one tab-separated row in
         sections/data/life-members-raw.js using this order:
